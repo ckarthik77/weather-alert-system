@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WeatherAlertService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Weather Alert System</a> &gt; <a href="index.source.html" class="el_package">com.devops.lab.weatheralert.service</a> &gt; <span class="el_source">WeatherAlertService.java</span></div><h1>WeatherAlertService.java</h1><pre class="source lang-java linenums">package com.devops.lab.weatheralert.service;
+
+import com.devops.lab.weatheralert.model.AlertResponse;
+import com.devops.lab.weatheralert.model.WeatherData;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+@Service
+<span class="fc" id="L12">public class WeatherAlertService {</span>
+
+    private static final double TEMP_ALERT_THRESHOLD = 35.0; // Celsius
+    private static final double HUMIDITY_ALERT_THRESHOLD = 80.0; // Percentage
+    private static final double WIND_SPEED_ALERT_THRESHOLD = 50.0; // km/h
+
+<span class="fc" id="L18">    private final Random random = new Random();</span>
+
+    /**
+     * Simulates weather data for a given location
+     */
+    public WeatherData getWeatherData(String location) {
+<span class="fc" id="L24">        WeatherData data = new WeatherData();</span>
+<span class="fc" id="L25">        data.setLocation(location);</span>
+<span class="fc" id="L26">        data.setTemperature(15 + random.nextDouble() * 25); // 15-40°C</span>
+<span class="fc" id="L27">        data.setHumidity(30 + random.nextDouble() * 60); // 30-90%</span>
+<span class="fc" id="L28">        data.setWindSpeed(5 + random.nextDouble() * 60); // 5-65 km/h</span>
+<span class="fc" id="L29">        data.setCondition(getRandomCondition());</span>
+<span class="fc" id="L30">        data.setTimestamp(System.currentTimeMillis());</span>
+<span class="fc" id="L31">        return data;</span>
+    }
+
+    /**
+     * Analyzes weather data and generates alerts
+     */
+    public AlertResponse analyzeWeather(String location) {
+<span class="fc" id="L38">        WeatherData weather = getWeatherData(location);</span>
+<span class="fc" id="L39">        List&lt;String&gt; alerts = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L40">        boolean alertTriggered = false;</span>
+
+        // Check temperature
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (weather.getTemperature() &gt; TEMP_ALERT_THRESHOLD) {</span>
+<span class="fc" id="L44">            alerts.add(&quot;⚠️ HIGH TEMPERATURE ALERT: &quot; + </span>
+<span class="fc" id="L45">                String.format(&quot;%.1f°C exceeds threshold of %.1f°C&quot;, </span>
+<span class="fc" id="L46">                weather.getTemperature(), TEMP_ALERT_THRESHOLD));</span>
+<span class="fc" id="L47">            alertTriggered = true;</span>
+        }
+
+        // Check humidity
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (weather.getHumidity() &gt; HUMIDITY_ALERT_THRESHOLD) {</span>
+<span class="fc" id="L52">            alerts.add(&quot;⚠️ HIGH HUMIDITY ALERT: &quot; + </span>
+<span class="fc" id="L53">                String.format(&quot;%.1f%% exceeds threshold of %.1f%%&quot;, </span>
+<span class="fc" id="L54">                weather.getHumidity(), HUMIDITY_ALERT_THRESHOLD));</span>
+<span class="fc" id="L55">            alertTriggered = true;</span>
+        }
+
+        // Check wind speed
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (weather.getWindSpeed() &gt; WIND_SPEED_ALERT_THRESHOLD) {</span>
+<span class="fc" id="L60">            alerts.add(&quot;⚠️ HIGH WIND ALERT: &quot; + </span>
+<span class="fc" id="L61">                String.format(&quot;%.1f km/h exceeds threshold of %.1f km/h&quot;, </span>
+<span class="fc" id="L62">                weather.getWindSpeed(), WIND_SPEED_ALERT_THRESHOLD));</span>
+<span class="fc" id="L63">            alertTriggered = true;</span>
+        }
+
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        String message = alertTriggered ? </span>
+<span class="fc" id="L67">            &quot;Weather alerts detected for &quot; + location : </span>
+<span class="fc" id="L68">            &quot;Weather conditions normal for &quot; + location;</span>
+
+<span class="fc" id="L70">        return new AlertResponse(alertTriggered, alerts, weather, message);</span>
+    }
+
+    private String getRandomCondition() {
+<span class="fc" id="L74">        String[] conditions = {&quot;Sunny&quot;, &quot;Cloudy&quot;, &quot;Rainy&quot;, &quot;Stormy&quot;, &quot;Windy&quot;, &quot;Clear&quot;};</span>
+<span class="fc" id="L75">        return conditions[random.nextInt(conditions.length)];</span>
+    }
+
+    /**
+     * Health check for service
+     */
+    public boolean isServiceHealthy() {
+<span class="fc" id="L82">        return true;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
