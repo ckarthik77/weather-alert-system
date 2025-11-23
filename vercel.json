@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "builds": [
     {
       "src": "**/*",
@@ -17,3 +18,13 @@
     }
   ]
 }
+=======
+  "public": true,
+  "builds": [
+    { "src": "frontend/**/*", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "frontend/$1" }
+  ]
+}
+>>>>>>> f6839bad7ecfe20c6edad4c6b8474d138144306f
