@@ -1,21 +1,19 @@
 {
-    "name": "weather-alert-website",
-    "version": "1.0.0",
-    "description": "Weather Alert System - DevOps CI/CD Project Website",
-    "main": "index.html",
-    "scripts": {
-      "dev": "vercel dev",
-      "build": "echo 'Static site - no build needed'",
-      "deploy": "vercel --prod"
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
     },
-    "keywords": [
-      "weather",
-      "devops",
-      "cicd",
-      "jenkins",
-      "docker",
-      "spring-boot"
-    ],
-    "author": "Your Name",
-    "license": "MIT"
-  }
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
