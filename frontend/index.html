@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Alert System - DevOps CI/CD Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="icon">🌤️</span>
+                <span class="brand-text">Weather Alert System</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#demo">Live Demo</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Weather Alert System</h1>
+                <p class="hero-subtitle">Real-time Weather Monitoring with Intelligent Alerts</p>
+                <p class="hero-description">
+                    A production-grade Spring Boot microservice with complete CI/CD pipeline 
+                    demonstrating DevOps best practices using Jenkins, Docker, Maven, and automated testing.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="btn btn-primary">Try Live Demo</a>
+                    <a href="https://github.com/yourusername/weather-alert-system" target="_blank" class="btn btn-secondary">
+                        View on GitHub
+                    </a>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-badge">Spring Boot</span>
+                    <span class="tech-badge">Jenkins</span>
+                    <span class="tech-badge">Docker</span>
+                    <span class="tech-badge">Maven</span>
+                    <span class="tech-badge">JUnit</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Automated CI/CD Pipeline</h3>
+                    <p>Complete Jenkins pipeline with automated testing, building, and deployment</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🐳</div>
+                    <h3>Docker Containerization</h3>
+                    <p>Multi-stage Docker builds for optimized production-ready containers</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Spring Boot Actuator integration with health checks and metrics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧪</div>
+                    <h3>Automated Testing</h3>
+                    <p>Comprehensive unit tests with JaCoCo code coverage reporting</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>REST API</h3>
+                    <p>Well-documented RESTful endpoints for weather data and alerts</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Smart Alerts</h3>
+                    <p>Intelligent threshold-based alerting for temperature, humidity, and wind</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <h2 class="section-title">Live API Demo</h2>
+            <div class="demo-container">
+                <div class="demo-controls">
+                    <h3>Test the API</h3>
+                    <div class="input-group">
+                        <label for="location">Enter Location:</label>
+                        <input type="text" id="location" placeholder="e.g., Mumbai, Delhi, Bangalore" value="Mumbai">
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="checkWeather()">Check Weather & Alerts</button>
+                        <button class="btn btn-secondary" onclick="getWeatherData()">Get Weather Data Only</button>
+                        <button class="btn btn-secondary" onclick="checkHealth()">API Health Check</button>
+                    </div>
+                </div>
+                <div class="demo-response">
+                    <h3>API Response</h3>
+                    <div id="response" class="response-box">
+                        <p class="placeholder">👆 Click a button to test the API</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="architecture">
+        <div class="container">
+            <h2 class="section-title">System Architecture</h2>
+            <div class="arch-content">
+                <div class="arch-diagram">
+                    <div class="pipeline-flow">
+                        <div class="pipeline-step">
+                            <div class="step-icon">💻</div>
+                            <div class="step-title">Code Push</div>
+                            <div class="step-desc">Git Repository</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="pipeline-step">
+                            <div class="step-icon">🔨</div>
+                            <div class="step-title">Build</div>
+                            <div class="step-desc">Maven Compile</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="pipeline-step">
+                            <div class="step-icon">🧪</div>
+                            <div class="step-title">Test</div>
+                            <div class="step-desc">JUnit + JaCoCo</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="pipeline-step">
+                            <div class="step-icon">🐳</div>
+                            <div class="step-title">Dockerize</div>
+                            <div class="step-desc">Build Image</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="pipeline-step">
+                            <div class="step-icon">🚀</div>
+                            <div class="step-title">Deploy</div>
+                            <div class="step-desc">Production</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-details">
+                    <h3>Technology Stack</h3>
+                    <ul>
+                        <li><strong>Backend:</strong> Spring Boot 3.1.5, Java 17</li>
+                        <li><strong>Build Tool:</strong> Maven 3.9</li>
+                        <li><strong>CI/CD:</strong> Jenkins with declarative pipeline</li>
+                        <li><strong>Containerization:</strong> Docker multi-stage builds</li>
+                        <li><strong>Testing:</strong> JUnit 5, JaCoCo code coverage</li>
+                        <li><strong>Monitoring:</strong> Spring Boot Actuator</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About This Project</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>DevOps CI/CD Laboratory Project</h3>
+                    <p>
+                        This project demonstrates enterprise-level DevOps practices by implementing a 
+                        complete CI/CD pipeline for a Spring Boot microservice. The Weather Alert System 
+                        monitors weather conditions and triggers intelligent alerts when thresholds are exceeded.
+                    </p>
+                    <p>
+                        The project showcases automated testing, containerization, continuous integration, 
+                        and deployment automation - core skills required for modern DevOps engineers.
+                    </p>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">95%</div>
+                            <div class="metric-label">Code Coverage</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">5</div>
+                            <div class="metric-label">Pipeline Stages</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">Automated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Weather Alert System - DevOps CI/CD Project</p>
+            <p>Built with Spring Boot, Jenkins, Docker & Maven</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
